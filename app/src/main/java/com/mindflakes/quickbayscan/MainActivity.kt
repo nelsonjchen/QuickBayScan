@@ -1,5 +1,7 @@
 package com.mindflakes.quickbayscan
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,24 +12,50 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.google.mlkit.vision.barcode.common.Barcode
+import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 import com.mindflakes.quickbayscan.ui.theme.QuickBayScanTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            QuickBayScanTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
-        }
+       Scan()
+
+
     }
+
+    fun Scan() {
+        val options = GmsBarcodeScannerOptions.Builder()
+            .enableAutoZoom() // available on 16.1.0 and higher
+            .build()
+        val scanner = GmsBarcodeScanning.getClient(this, options)
+        scanner.startScan()
+            .addOnSuccessListener { barcode ->
+                val rawValue: String? = barcode.rawValue
+                if (rawValue != null) {
+                    // Base URL Example
+                    // https://www.ebay.com/sch/i.html?_from=R40&_nkw=9780345453747&_sacat=0&rt=nc&LH_Sold=1&LH_Complete=1
+                    // Instead of 9780345453747, we want to use the rawValue, if it's set, otherwise try scanning again
+                    // Open the URL in the browser
+                    // Close the app
+                    val url = "https://www.ebay.com/sch/i.html?_from=R40&_nkw=$rawValue&_sacat=0&rt=nc&LH_Sold=1&LH_Complete=1"
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
+                    finish()
+                }
+
+            }
+            .addOnCanceledListener {
+                Scan()
+            }
+            .addOnFailureListener { e ->
+                Scan()
+            }
+    }
+
 }
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
