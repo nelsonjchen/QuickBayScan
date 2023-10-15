@@ -15,3 +15,7 @@ Wish there was a way to do that without this app? Me too. But there isn't. So he
 It's just a single Activity. The activity calls out to [Google Code Scanner][codescan] to scan the barcode. It then launches an Intent to open the eBay app with the search results or if you don't have the eBay app installed, it opens the eBay website in a browser.
 
 [codescan]: https://developers.google.com/ml-kit/vision/barcode-scanning/code-scanner
+
+## Recipe
+
+Bind it to a button or a gesture in the OS to launch the app. Scan a barcode. It'll open the eBay app or website with the search results. 
