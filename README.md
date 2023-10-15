@@ -2,7 +2,7 @@
 
 ![_f99ad76c-446a-4468-8600-9fac06efb472](https://github.com/nelsonjchen/op-replay-clipper/assets/5363/1ad6b4eb-fc44-406f-b8b6-f7e75475091d)
 
-A _really_, and I mean **really** dumb quick barcode scanner for eBay Android. You scan a UPC or barcode or ISBN or whatever, it looks it up on eBay with "Sold Listings" checked.
+A _really_, and I mean **really**, dumb quick barcode scanner for eBay Android. You scan a UPC or barcode or ISBN or whatever, it looks it up on eBay with "Sold Listings" checked.
 
 ## Why?
 
