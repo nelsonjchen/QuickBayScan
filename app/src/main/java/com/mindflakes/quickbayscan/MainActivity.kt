@@ -27,6 +27,18 @@ class MainActivity : ComponentActivity() {
 
     fun Scan() {
         val options = GmsBarcodeScannerOptions.Builder()
+            .allowManualInput()
+            .setBarcodeFormats(
+//                Barcode.FORMAT_CODABAR,
+                Barcode.FORMAT_CODE_39,
+                Barcode.FORMAT_CODE_93,
+                Barcode.FORMAT_CODE_128,
+                Barcode.FORMAT_EAN_8,
+                Barcode.FORMAT_EAN_13,
+//                Barcode.FORMAT_ITF,
+                Barcode.FORMAT_UPC_A,
+                Barcode.FORMAT_UPC_E
+            )
             .enableAutoZoom() // available on 16.1.0 and higher
             .build()
         val scanner = GmsBarcodeScanning.getClient(this, options)
