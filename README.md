@@ -4,11 +4,13 @@
 
 A _really_, and I mean **really**, dumb quick barcode scanner for eBay Android. You scan a UPC or barcode or ISBN or whatever, it looks it up on eBay with "Sold Listings" checked.
 
+That's it. That's all it does.
+
 ## Why?
 
 Don't believe the prices for sale without "Sold Listings" checked. The price of what was sold recently is the only thing that matters.
 
-Wish there was a way to do that without this app? Me too. But there isn't. So here we are.
+Wish there was a way to do that without this app without tapping a lot? Me too. But there isn't. So here we are.
 
 ## Architecture
 
