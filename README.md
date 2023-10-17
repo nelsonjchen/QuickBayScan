@@ -20,4 +20,4 @@ It's just a single Activity. The activity calls out to [Google Code Scanner][cod
 
 ## Recipe
 
-Bind it to a button or a gesture in the OS to launch the app. Scan a barcode. It'll open the eBay app or website with the search results. 
+Bind it to a button or a gesture in the OS to launch the app. Scan a barcode. It'll open the eBay app or website with the search results. I have mine bound to tap on back. It's *not* permanent so if I want to use that for something else, I can in the future. 
